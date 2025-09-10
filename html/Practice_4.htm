@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <form action="">
+      <fieldset>
+        <legend>Bio-Data</legend>
+        <label for="fname"
+          >Firstname:
+          <input type="text" name="fname" id="fname" required /> </label
+        ><br /><br />
+        <label for="lname"
+          >LastName: <input type="text" name="lname" id="lname" required/></label
+        ><br /><br />
+        <label for="email"
+          >Email:<input type="email" name="email" id="email" required/> </label
+        ><br /><br />
+        <label for="age">Age: <input type="number" name="age" id="age" required/></label
+        ><br /><br />
+        <label for="password"
+          >Password: <input type="password" name="password" id="password"
+        required/></label>
+        <label for="Gender"
+          ><br /><br />Gender:<input
+            type="radio"
+            name="gender"
+            id="male"
+            value="male"
+          />
+        </label>
+        <label for="Male">Male</label>
+        <input type="radio" name="gender" id="female" value="female" />
+        <label for="Female">Female</label><br /><br />
+        <label for="hobbies"
+          >Hobbies:
+          <input
+            type="checkbox"
+            name="fishing"
+            id="fishing"
+            value="fishing"
+          />Fishing
+          <input
+            type="checkbox"
+            name="Cooking"
+            id="Cooking"
+            value="Cooking"
+          />Cooking
+          <input
+            type="checkbox"
+            name="reading"
+            id="reading"
+            value="reading"
+            required
+          />Reading<br /><br />
+          <label for="country">Country:</label>
+          <select name="country" id="country">
+            <option value="nigeria">Nigeria</option>
+            <option value="USA">USA</option>
+            <option value="SouthAfrica">South Africa</option>
+            <option value="United Kingdom">UK</option>
+            <option value="Canada">Canada</option>
+          </select>
+          <br /><br />
+          <input type="submit" id="Submit" value="Submit" />
+        </label>
+      </fieldset>
+    </form>
+  </body>
+</html>

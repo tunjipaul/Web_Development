@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Webpage</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .boxspace {
+            border-style: none;
+            height: 5px;
+            padding: 10px;
+            width: 250px;
+            opacity: 0.1;
+
+        }
+
+        #others {
+            color: #59ff89;
+        }
+
+        .second_div {
+            background-color: rgba(7, 13, 17, 0.623);
+            padding: 100px;
+            margin: 250px;
+            width: 50%;
+
+        }
+
+        body {
+            background-color: rgba(82, 224, 177, 0.623);
+        }
+
+        #send {
+            border-style: none;
+            margin: 0;
+
+        }
+        /* #name{
+            /* background-color: ; */
+        
+
+        #comment {
+            border-style: none;
+            resize: both; 
+            width: 550px;
+            max-width: 400px; 
+            min-width: 200px; 
+            padding: 25px;
+            margin: 10px;   
+            max-height: 300px; 
+            min-height: 200px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_div">
+
+        <div class="nav_div">
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>Services</li>
+                    <li>Contact</li>
+                    <li>About</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="second_div">
+            <header>
+            <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-bottom: 25px;">Details</p>
+            </header>
+            <main>
+                <section>
+                    <form action="">
+                        <h3 style="padding-bottom: 10px;">
+                            CONTACT FORM
+                            <hr style="padding-top: 3px;">
+                        </h3>
+                        <label for="fullname" id="name" style="color: bisque;">YOUR NAME* |
+                            <input class="boxspace"  type="text" name="fullname" id="fullname"
+                                placeholder="This field is required" required>
+                        </label> <br>
+                        <hr> <br>
+                        <label for="email" id="others">EMAIL* |
+                            <input class="boxspace" type="email" name="email" id="email" required placeholder="user@example.com"> <br><br>
+                            <hr> <br>
+                        </label>
+                        <label id="others" for="phone">PHONE* |
+                            <input class="boxspace" type="tel" name="phone" id="phone" required pattern="[+234]{3}-[56]{2}-[789]{3}" placeholder=""> <br><br>
+                            <hr>
+                            <label id="others" for="comment">YOUR MESSAGE |<br> <br>
+
+                            </label>
+                            <textarea name="comment" id="comment" id="comment"
+                                required> drop your message here</textarea>
+                            <br><br>
+                            <hr>
+                        </label>
+                        <button id="send" type="submit">Send</button>
+
+                    </form>
+                </section>
+                <section>
+                    <img src="" alt="">
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

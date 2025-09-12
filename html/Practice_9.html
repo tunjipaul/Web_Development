@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: "Bodoni Moda";
+        background-color: #1B3C53;
+    }
+
+    .gen_container {
+        margin: 250px auto;
+        width: 50%;
+        padding: 30px;
+        background-color: #456882;
+        border-radius: 10px;
+    }
+
+    div ul li {
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+    }
+
+    div ul li a {
+        color: black;
+        text-decoration: none;
+    }
+
+    div ul li a:hover {
+        color: chocolate;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    div input {
+        border-style: none;
+        background-color: white;
+        height: 8px;
+        padding: 18px;
+        width: 50%;
+        box-sizing: border-box;
+        font-weight: 900;
+    }
+
+    div form textarea {
+        border-style: none;
+        background-color: white;
+        /* resize: none; */
+        width: 50%;
+        height: 60px;
+        box-sizing: border-box;
+    }
+
+    .submit:hover {
+        color: rgb(124, 159, 224);
+        background-color: rgb(65, 87, 109);
+        border-radius: 5px;
+    }
+
+    div form button {
+        margin-bottom: 12px;
+        background-color: transparent;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.952);
+        padding: 10px;
+        font-family: "Bodoni Moda";
+        font-weight: 500;
+        border-collapse: collapse;
+        border: none;
+    }
+    label {
+        color: #69a1cc;
+    }
+</style>
+
+<body>
+    <div class="gen_container">
+        <header>
+            <div class="header_container">
+                <div>
+                    <h1 style="text-align: center; margin-top: 15px; margin-bottom: 15px; padding-top: 10px;">My
+                        Portfolio</h1>
+                </div>
+
+                <div class="nav_div" style=" display: flex; justify-content: center; margin-bottom: 12px;">
+                    <nav>
+                        <ul
+                            style="list-style: none; display: flex; width: 300px; gap: 40px; justify-content: center; padding: 8px; align-items: center; background-color: #f7f7f7; width: 400px; border-radius: 15px; ">
+                            <li><a href="http://127.0.0.1:5501/html/Practice_9.html" target="_blank"
+                                    rel="noopener noreferrer">Home</a></li>
+                            <li><a href="https://www.linkedin.com/in/paul-ogor-9103601b1/" target="_blank"
+                                    rel="noopener noreferrer">About</a></li>
+                            <li><a href="https://github.com/tunjipaul" target="_blank"
+                                    rel="noopener noreferrer ">Projects</a></li>
+                            <li><a href="https://x.com/tunji_paul_" target="_blank"
+                                    rel="noopener noreferrer">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="main_container">
+            <main>
+                <div>
+                    <section>
+                        <div>
+                            <h2 style="margin-bottom: 12px; padding: 10px;">Welcome to my Portfolio</h2>
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 10px; padding: 10px;">I am a web developer and designer
+                                specializing in creating <br>beautiful and functional
+                                websites.</p>
+                        </div>
+                </div>
+                <div style="display: flex;">
+
+
+                    <div>
+                        <div>
+                            <figure>
+                                <img src="/html/laptop.jpg" alt="A Laptop on VSCode"
+                                    style="width: 470px; margin-bottom: 12px; border-radius: 50px; padding-left: 20px;">
+                            </figure>
+                        </div>
+                        <div>
+                            <div>
+                                <h2 style="margin-bottom: 10px; padding: 10px;">About Me</h2>
+                            </div>
+                            <div>
+                                <p style="margin-bottom: 10px; padding: 10px;">I have over 5 years experience in web
+                                    <br>
+                                    development with a focus on front-end <br>
+                                    technologies. Ienjoy turning ideas into reality <br>
+                                    through clean and efficient code.
+                                </p>
+                            </div>
+                        </div>
+                        </section>
+                    </div>
+                    <div>
+                        <section>
+                            <div
+                                style="margin-left: 15px; background-color: #1B3C53; border-radius: 10px; padding-left: 8px;">
+                                <div>
+                                    <h3 style="margin-bottom: 10px; padding: 10px;">Contact</h3>
+                                </div>
+                                <div style="display: flex; flex-direction: column; width: 380px;">
+                                    <div>
+                                        <form action="">
+                                            <label for="name">Name <br> <br>
+                                                <input type="text" name="name" id="name" required>
+                                            </label> <br> <br>
+                                            <label for="email">Email <br><br>
+                                                <input type="email" name="email" id="email" required>
+                                            </label> <br><br>
+                                            <label for="message">
+                                                Message <br> <br>
+                                                <textarea name="message" id="message" required></textarea>
+                                            </label> <br><br>
+                                            <button type="submit" class="submit">Submit</button>
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <figure>
+                                            <img src="/html/OTPP.jpg" alt="an image of tunjipaul"
+                                                style="width: 65%; border-radius: 15px; height: 310px;">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+
+            </main>
+        </div>
+        <div style="display: flex; justify-content: center; margin-top: 10px;">
+            <footer
+                style="background-color: #ffffff; width: 300px; padding: 5px; margin-bottom: 5px; border-radius: 10px;">
+                <p style="text-align: center; padding: 5px;">© 2024 My Portfolio</p>
+            </footer>
+        </div>
+
+    </div>
+</body>
+
+</html>

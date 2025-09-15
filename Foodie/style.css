@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "Poppins", sans-serif;
+}
+.first_container{
+    background-color: black;
+}
+.header_container{
+    display:flex;
+    justify-content: space-between;
+    
+}
+div header img{
+    width: 50px;
+    height: 40px;
+    object-fit: contain;
+    padding-top: 10px;
+}
+div header span{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    padding-bottom: 10px;
+}
+div ul{
+    display: flex;
+    list-style: none;
+    gap: 15px;
+
+   
+}
+div ul li{
+    color: white;
+}
+.hero_container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 40px;
+}
+
+.hero_content_1{
+    color: white;
+}
+.hero_content_1 strong{
+    color: chartreuse;
+}
+.hero_content_2{
+    color: white;
+}
+.hero_content_3 button{
+    background-color: greenyellow;
+    padding: 10px;
+    border-radius: 25px;
+}
+.order_container{
+    /* display: flex;
+    
+    border: 1px solid green;
+    justify-items: center;
+    gap: 20px;
+    padding: 40px; */
+    
+}
+
+.second_container{
+    background-color: rgb(5, 5, 40);
+}
+.second_container div h1{
+    color: white;
+    
+}
+.second_container div span{
+    color: green;
+}
+.second_container div p{
+    color: white;
+}
+.second_container div button{
+    background-color: rgb(59, 173, 59);
+    padding: 15px;
+    border-radius: 25px;
+    font-weight: 800;
+    width: 35%;
+    
+}
+.second_container .about_button{
+margin-right: 200px;
+}
+
+.third_container{
+    
+}
+.menu_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+}
+.menu_menu{
+    display: flex;
+    
+}

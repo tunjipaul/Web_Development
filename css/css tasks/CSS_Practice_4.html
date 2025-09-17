@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Practice 4</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .general-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        border: 2px solid red;
+        justify-content: center;
+        height: 100%;
+        background-color: rgba(252,236,213,255);
+    
+        
+      }
+      .first-div{
+        border: 2px solid green;
+        padding: 20px;
+        border-radius: 10px;
+        background-color:  rgb(206, 145, 65);
+      }
+      .second-div{
+        border: 2px solid blue;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: rgb(206, 145, 65);
+      }
+      img {
+        border-radius: 30px;
+        width: 100px;
+        height: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="general-container">
+      <div class="first-div">
+        <h1>About Me.</h1>
+        <figure class="image">
+          <img
+            src="/css/css tasks/Images/TunjiPaul.jpeg"
+            alt="an image of tunjipaul"
+          />
+        </figure>
+        <p>
+          Hello! I'm a friendly and <br> outgoing individual with a <br> passion for
+          creating and <br> connecting with others. I <br> love to share my experiences <br>
+          and knowledge.
+        </p>
+      </div>
+      <div class="second-div">
+        <h2>Education</h2>
+        <p>Student of GenAIFellowship</p>
+        <p>Graduate, Mechatronics Engineering.</p>
+        <p>GMNSE</p>
+      </div>
+    </div>
+  </body>
+</html>

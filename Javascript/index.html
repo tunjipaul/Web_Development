@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Task</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .first-container{
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+            border: 1px solid red;
+            padding: 20px;
+            gap: 20px;
+        }
+        .second-container{
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+            border: 1px solid green;
+            gap: 20px;
+            padding: 20px;
+        }
+        button{
+            padding: 20px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(190, 149, 149);
+            color: rgb(4, 36, 65);
+            font-weight: 400;
+            font-size: medium;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        button:hover{
+            background-color: rgb(236, 91, 91);
+            color: bisque;
+            cursor: pointer;
+        }
+    #about-container, #contact-container, #skills-container{
+        display: none;
+    }
+    </style>
+</head>
+<body>
+    <div class="general-container">
+      <div class="first-container">
+        <button type="submit" id="about">About Me</button>
+        <button type="submit" id="contact">Contact</button>
+        <button type="submit" id="skills">My Skills</button>
+      </div>
+      <div class="second-container">
+      <div id="about-container">
+       <h1>About Me.</h1>
+       <p>My name is Tunjipaul</p>
+      </div>
+      <div id="contact-container">
+        <h1>Contact</h1>
+        <p>09019978821</p>
+      </div>
+      <div id="skills-container">
+        <h1>Skills</h1>
+        <p>Git, GitHub</p>
+      </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

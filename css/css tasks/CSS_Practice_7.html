@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        height: 100%; /* allow full viewport height */
+        margin: 0;
+      }
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100vh; /* take full screen height */
+      }
+
+      .header {
+        height: 100px; /* or auto */
+      }
+
+      .footer {
+        height: 100px; /* or auto */
+      }
+
+      .content {
+        flex: 1; /* fill all space between header & footer */
+        display: flex; /* so children align horizontally */
+      }
+
+      .sidebar,
+      .main {
+        flex: 1; /* each will stretch vertically */
+        border: 1px solid green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+  <div class="header">I am the header</div>
+
+  <div class="content">
+    <div class="sidebar">A side Bar</div>
+    <div class="main">I am the main man</div>
+    <div class="sidebar">A Side bar</div>
+  </div>
+
+  <div class="footer">The footer</div>
+</div>
+
+  </body>
+</html>

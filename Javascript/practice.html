@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Javascript</title>
+        <style>
+        .js-demo {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 2px solid #007bff;
+            color: black;
+        }
+
+        .output {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: "Courier New", monospace;
+            border-left: 4px solid #28a745;
+        }
+
+        .demo-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        .demo-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+      <div class="js-demo">
+        <h3>Personal Information</h3>
+        <p>Create your personal information</p>
+
+        <button class="demo-button" onclick="createPersonalInfo()">My Personal Information</button>
+        <button class="demo-button" onclick="createCustomInfo()">Custom Information</button>
+        <div id="practice-output" class="output">Click any button to view</div>
+    </div>
+
+
+    <script>
+        function createPersonalInfo() {
+            //use const for permanent things and let for mutable things.
+            const firstName = "Paul";
+            const lastName = "Ogor";
+            const age = 23;
+            const isStudent = true;
+            const favoriteColor = "pink";
+
+            //future age calculation
+
+            const futureAge = age + 5;
+            //formated display
+            const personalInfo = `
+                <div>
+                    <h4>Your Personal Information</h4>
+                    <p><Strong>Name:</Strong> ${firstName} ${lastName}</p>
+                    <p><strong>Current Age:</strong> ${age} years old</p>
+                    <p><strong>Student Status:</strong> ${isStudent ? 'yes I am a student': "No, I'm not a student."}</p>
+                    <p><strong>Favorite Color:</strong> ${favoriteColor} is your favorite color </p>
+                    <p><strong>Age in 5years:</strong> You will be ${futureAge} years old.</p>
+                    <p><strong>FunFact:</strong>Your name has ${firstName.length + lastName.length} letters in total!</p>
+                </div>
+          `;
+            document.getElementById("practice-output").innerHTML = personalInfo;
+        }
+        function createCustomInfo(){
+            const firstName = prompt("what is your first name: ")
+            const lastName = prompt("what is your last name: ")
+            const age = Number(prompt("what is your age: "))
+            const isStudent = prompt("are you a student: ")
+            const favoriteColor = prompt("what is your favorite color: ")
+
+            const futureAge = age + 5;
+
+            const personalInfo = `
+             <div>
+                    <h4>Your Personal Information</h4>
+                    <p><Strong>Name:</Strong> ${firstName} ${lastName}</p>
+                    <p><strong>Current Age:</strong> ${age} years old</p>
+                    <p><strong>Student Status:</strong> ${isStudent ? 'yes I am a student': "No, I'm not a student."}</p>
+                    <p><strong>Age in 5years:</strong> You will be ${futureAge} years old.</p>
+                    <p><strong>Favorite Color:</strong> ${favoriteColor} is your favorite color </p>
+                    <p><strong>FunFact:</strong>Your name has ${firstName.length + lastName.length} letters in total!</p>
+                </div>
+                `;
+                document.getElementById('practice-output').innerHTML = personalInfo
+        }
+    </script>
+</body>
+</html>

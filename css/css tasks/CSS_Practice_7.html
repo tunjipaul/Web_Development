@@ -1,54 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      html,
-      body {
-        height: 100%; /* allow full viewport height */
-        margin: 0;
-      }
-
-      .wrapper {
-        display: flex;
-        flex-direction: column;
-        height: 100vh; /* take full screen height */
-      }
-
-      .header {
-        height: 100px; /* or auto */
-      }
-
-      .footer {
-        height: 100px; /* or auto */
-      }
-
-      .content {
-        flex: 1; /* fill all space between header & footer */
-        display: flex; /* so children align horizontally */
-      }
-
-      .sidebar,
-      .main {
-        flex: 1; /* each will stretch vertically */
-        border: 1px solid green;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="wrapper">
-  <div class="header">I am the header</div>
-
-  <div class="content">
-    <div class="sidebar">A side Bar</div>
-    <div class="main">I am the main man</div>
-    <div class="sidebar">A Side bar</div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    .header{
+      display: flex;
+      gap: 30px;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 10px;
+      padding-right: 10px;
+      background-color: rgba(215, 127, 50, 0.792);
+    }
+  
+  
+    .header img{
+      margin-top: 5px;
+      width: 80px;
+      height: 50px;
+      border-radius: 3px;
+    }
+    nav{
+      padding: 10px;
+    }
+   .header ul{
+      list-style: none;
+      display: flex;
+      margin-top: 10px;
+      gap: 30px;
+    }
+    .header a{
+      text-decoration: none;
+      padding: 10px;
+      color: black;
+    }
+    .header a:hover{
+      color: brown;
+      text-decoration: underline;
+    }
+    .button-logo{
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+    button{
+    padding: 8px 24px;
+    background-color: aliceblue;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    
+    }
+    #login{
+     background-color: antiquewhite;
+    }
+    #signup{
+     background-color: rgb(209, 176, 132);
+    }
+    #login:hover{
+     background-color: rgb(70, 43, 9);
+    }
+    #signup:hover{
+      background-color: rgb(255, 150, 14);
+    }
+    .main{
+      background-color: bisque;
+      display: flex;
+      justify-content: space-between;
+      /* align-items: center; */
+      height: 480px;
+      gap: 20px;
+      
+    }
+    .main aside{
+    }
+    .main section{
+    }
+    .figure{
+      background-color: bisque;
+    }
+    .figure h2{
+      text-align: center;
+    }
+    .figure-container{
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       padding-left: 20px;
+       padding-right: 20px;
+       height: 200px;
+       
+    }
+    .figure-container img{
+      width: 180px;
+      height: 150px;
+      border-radius: 2px;
+    }
+    .figure-container img:hover{
+        transform: rotate(-360deg); 
+        transition: transform 0.5s ease;
+    }
+    .footer-container{
+      display: flex;
+      gap: 20px;
+      justify-content: space-evenly;
+      background-color: rgba(215, 127, 50, 0.792);
+    }
+    .form-container{
+     text-align: center;
+     padding: 20px;
+     background-color:rgba(215, 127, 50, 0.792);
+     border-radius: 3px;
+    }
+    .form-container fieldset{
+      border: none;
+    }
+    .form-container legend{
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .form-container input{
+      width: 100%;
+      border: none;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .form-container input:hover{
+       background-color: bisque;
+    
+    }
+    .form-container textarea{
+      resize: none;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      padding: 5px;
+    }
+    .form-container textarea:hover{
+      background-color: bisque;
+    }
+    .form-container button{
+      background-color: antiquewhite;
+      font-weight: 600;
+      width: 100%;
+    }
+    .form-container button:hover{
+      background-color: rgba(125, 64, 12, 0.792);
+      color: bisque;
+    }
+    .contact{
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      background-color: rgba(215, 127, 50, 0.792);
+      padding: 20px;
+      border-radius: 3px;
+      
+    }
+    .contact img{
+      width: 20px;
+      height: 20px;
+    }
+   
+  </style>
+</head>
+<body>
+  <div class="general-container">
+    <header>
+      <div class="header">
+          <figure>
+              <img src="/css/css tasks/Images/229672525.png" alt="a logo of...">
+            </figure>             
+         <nav>
+            <ul>
+              <li><a href="#" target="_blank" rel="noopener noreferrer">Home</a></li>
+              <li><a href="#" target="_blank" rel="noopener noreferrer">About</a></li>
+              <li><a href="#" target="_blank" rel="noopener noreferrer">Contact</a></li>
+              <li><a href="#" target="_blank" rel="noopener noreferrer">Services</a></li>
+            </ul>
+         </nav>
+         <div class="button-logo">
+           <button id="login">Login</button>
+           <button id="signup">Sign Up</button>
+         </div>
+      </div>
+    </header>
+    <main>
+      <div class="main">
+          <aside>
+            <h1>About Me</h1>
+            <p>Lorem ipsum dolor init makgkgkjgkgfhhhhhhhhfhfhfhfhfhfhfhfhffhfhfh</p>
+          </aside>
+          <section>
+            <h1>What I do?</h1>
+            <p>Seasoned AI developer fhgkfjgfghhhhhhhhjjjjjjjj</p>
+          </section>
+      </div>
+    </main>
+    <figure class="figure">
+       <h2>
+          A day in the life of OTP.
+        </h2>
+      <div class="figure-container">
+        <img src="/css/css tasks/Images/Coding Deploy Shirt, Developer Life Tee.jfif" alt="a picture of tunjipaul">
+        <img src="/css/css tasks/Images/Eat Sleep Code Wiederholung Software Engineer Hoodie Unisex Programmierer Pullover CodingEntwickler Sweatshirt Geschenk für Nerd Boyfriend Hoodie.jfif" alt="a picture of tunjipaul">
+        <img src="/css/css tasks/Images/Funny GitHub Unisex T-shirt.jfif" alt="a picture of tunjipaul">
+      </div>
+    </figure>
+       <footer>
+        <div class="footer-container">
+          <div class="form-container"> 
+         <form action="">
+          <fieldset>
+            <legend>Leave us a Message</legend>
+              <input type="text" name="fullname" id="name" required placeholder="Your Name"> <br> <br>
+              <input type="text" name="email" id="email" required placeholder="Your Email"> <br> <br>
+              <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Leave your comment here..."></textarea> <br><br>
+              <button type="submit">Send</button>
+          </fieldset>
+         </form>
+          </div>
+          <div class="contact">
+            <h3>Contact Us</h3>
+            <div>
+              <img src="/css/css tasks/Images/pin_402326.png" alt="Location Icon">
+              <span>25 Street, Manchester.</span>
+            </div>
+            <div>
+              <img src="/css/css tasks/Images/envelope_11869335.png" alt="Email Icon">
+              <span>tunjipaul007@gmail.com</span>
+            </div>
+            <div>
+              <img src="/css/css tasks/Images/phone_6402190.png" alt="Phone Icon">
+              <span>09019978821</span>
+            </div>
+          </div>
+        </div>
+       </footer>
   </div>
-
-  <div class="footer">The footer</div>
-</div>
-
-  </body>
+</body>
 </html>

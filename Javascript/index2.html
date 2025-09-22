@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript codebook</title>
+    <style>
+        .js-demo {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 2px solid #007bff;
+            color: black;
+        }
+
+        .output {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: "Courier New", monospace;
+            border-left: 4px solid #28a745;
+        }
+
+        .demo-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        .demo-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="js-demo">
+        <h3>first javascript program</h3>
+        <p>click the button to run your first javascript code:</p>
+        <button class="demo-button" onclick="runFirstProgram()">
+            Run Hello World
+        </button>
+        <button class="demo-button" onclick="showAlert()">Show Alert</button>
+        <div id="first-output" class="output">output will appear here...</div>
+    </div>
+    <div class="js-demo">
+        <h3>working with variables</h3>
+        <p>click each button to see different variable examples.</p>
+        <button class="demo-button" onclick="showbasicvariables()">
+            basic variables
+        </button>
+        <button class="demo-button" onclick="showVariableTypes()">
+            Show Variable Types
+        </button>
+        <button class="demo-button" onclick="demonstrateConstVsLet()">
+            Demonstrate Const vs Let
+        </button>
+        <button class="demo-button" onclick="variableNamingExamples()">
+            Variable Naming Examples
+        </button>
+        <div id="variables-output" class="output">
+            click a button to see variable examples...
+        </div>
+    </div>
+    <script>
+        function showbasicvariables() {
+            //creating variables with different declarations
+            let studentName = "Alice";
+            const schoolName = "tech academy";
+            let age = 25;
+            //display the variables
+            let output = `
+        <strong>Basic Variables:</strong>
+        student name: ${studentName} <br>
+        school name: ${schoolName} <br>
+        age: ${age} <br>
+       <em> studentName and age use "let"(can be changed) <br>
+        schoolName uses 'const' (cannot be changed) </em>
+        `;
+            document.getElementById("variables-output").innerHTML = output;
+            console.log(
+                "student:",
+                studentName,
+                "age:",
+                age,
+                "school:",
+                schoolName
+            );
+        }
+        function showVariableTypes() {
+            //different data types
+            let userName = "John Doe"; //string
+            let userAge = 30; //number
+            let isActive = true; //boolean
+            let salary = 50000.5; //number (with decimals)
+            let middleName = null; //null (intentionally empty)
+            let nickname; //undefined (not assigned)
+
+            let output = `
+          <strong>Variable Types:</strong> <br>
+          userName: "${userName}" (type:${typeof userName}) <br>
+          userAge: ${userAge} (type: ${typeof userAge}) <br>
+          isActive: ${isActive} (type: ${typeof isActive}) <br>
+          salary: ${salary} (type: ${typeof salary}) <br>
+          middleName: ${middleName} (type: ${typeof middleName}) <br>
+          nickname: ${nickname} (type: ${typeof nickname}) 
+        
+        `;
+            document.getElementById("variables-output").innerHTML = output;
+        }
+        function demonstrateConstVsLet() {
+            let changeable = "i can be changed";
+            const permanent = "i cannot be changed";
+            //change the let variable
+            changeable = " I have been changed";
+            //try to change const (this would throw an error)
+            //permanent = 'this would cause an error!';
+
+            let output = `
+         <strong>const vs let:</strong> <br>
+         changeable (let): ${changeable} <br>
+         permanent (const): ${permanent} <br><br>
+         <em>the 'let' variable was successfully changed. <br>
+            trying to change a 'const' variable would cause an error!
+            </em>
+        `;
+            document.getElementById("variables-output").innerHTML = output;
+        }
+        function variableNamingExamples() {
+            //good variable names (descriptive and follow conventions)
+            let firstName = "maria";
+            let lastName = "garcia";
+            let phoneNumber = "555-0123";
+            let isloggedIn = true;
+            let totalPrice = 99.99;
+
+
+            //examples of what not to do (but still valid)
+            let a = 'bad name - not descriptive';
+            let x123 = 'confusing name';
+
+            let output = `
+         <strong>variable naming examples:</strong> <br> <br>
+         <strong>Good names (descriptive): </strong> <br>
+         firstName: ${firstName} <br>
+         lastName: ${lastName} <br>
+         phoneNumber: ${phoneNumber} <br>
+         islogggedIn: ${isloggedIn} <br>
+         totalPrice: $${totalPrice}<br><br>
+         <strong>Poor Names (avoid these): </strong><br>
+         a: "${a}<br>"
+         x123: "${x123}" <br><br>
+         <em>Use camelCase and descriptive names! </em>
+        `;
+            document.getElementById("variables-output").innerHTML = output;
+        }
+    </script>
+    <div class="js-demo">
+        <h3>data types deep dive</h3>
+        <p>explore different data types and how javascript handles them:</p>
+        <button class="demo-button" onclick="exploreStrings()">Strings</button>
+        <button class="demo-button" onclick="exploreNumbers()">Numbers</button>
+        <button class="demo-button" onclick="exploreBooleans()">Boolens</button>
+        <button class="demo-button" onclick="exploreSpecialValues()">Special Values</button>
+        <div id="datatypes-output" class="output">Click a button to explore data types...</div>
+    </div>
+    <script>
+        function exploreStrings() {
+            //diffrent ways to explore strings
+            let singleQuotes = 'hello world';
+            let doubleQuotes = "Javascript is fun";
+            let templateLiteral = `today is ${new Date().toDateString()}`;
+            // console.log(templateLiteral)
+
+            //string properties and methods
+            let message = 'learning javascript';
+            let length = message.length;
+            let upperCase = message.toUpperCase();
+            let lowercase = message.toLowerCase();
+            let output = `
+          <strong>Working with Strings:</strong><br><br>
+        Single quotes: '${singleQuotes}'<br>
+        Double quotes: "${doubleQuotes}"<br>
+        
+        Template literal: \`${templateLiteral}\`<br><br>
+        <strong>String Methods:</strong><br>
+        Original: "${message}"<br>
+        Length: ${length} characters<br>
+        Uppercase: "${upperCase}"<br>
+        Lowercase: "${lowercase}"<br><br>
+        <em>Template literals (\`) allow embedding variables with \${}</em>
+    `;
+
+            document.getElementById('datatypes-output').innerHTML = output;
+        }
+    </script>
+    <script src="script2.js"></script>
+</body>
+
+</html>

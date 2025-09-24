@@ -50,7 +50,7 @@ function calculatePrice() {
 
 function weatherAdvice(){
     let temperature = Number(prompt("What is your temperature: "));
-    let isRaining = false
+    let isRaining = false;
     if(temperature<=50){
         isRaining = prompt("Is it raining?(true/false ").toLowerCase() === 'true';
     }
@@ -76,3 +76,28 @@ function weatherAdvice(){
 
    
 }
+
+function atm(balance, action, amount){
+let action = prompt("do you want to withdraw/deposit: ").toLowerCase();
+let amount = prompt(`how much do you want to ${action}:` ).toLowerCase();
+   if (action === "withdraw"){
+     if (balance >= amount){
+        balance -= amount;
+        return`Withdrawal successful. New balance: $${balance}`
+     }
+     else{
+        return`Insufficient Funds, Available Balance: $${balance}`
+     }
+     
+   }
+   else if (action === "deposit"){
+    balance += amount;
+    return `Transfer Successful, New Balance: $${balance}`
+   }else{
+    return `Invalid Code`
+   }
+
+} if (action === "withdraw"=== amount){
+
+}
+// console.log(atm(`${balance}, withdraw, 500`))

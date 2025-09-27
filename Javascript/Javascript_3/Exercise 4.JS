@@ -23,56 +23,39 @@ function calcAverage(grades) {
   return averageGrade;
 }
 
-
 function highestAndLowestGrade(grades) {
   let highestGrade = Math.max(...grades);
   let lowestGrade = Math.min(...grades);
   console.log("Class Highest Grade: ", highestGrade);
   console.log("Class Lowest Grade: ", lowestGrade);
-  return {highestGrade, lowestGrade}
+  return { highestGrade, lowestGrade };
 }
 
-
-
-
-function letterGrade(grade){
-    if (grade === 100){
-        return "A+";
-    }
-    else if (grade >= 90){
-        return "A-";
-    }
-     else if (grade >= 80){
-        return "A";
-    }
-     else if (grade >= 70){
-        return "B";
-    }
-     else if (grade >= 60){
-        return "C";
-    }
-     else if (grade >= 55){
-        return "D";
-    }
-    else{
-        return "F";
-    }
-    
-
+function letterGrade(grade) {
+  if (grade === 100) {
+    return "A+";
+  } else if (grade >= 90) {
+    return "A-";
+  } else if (grade >= 80) {
+    return "A";
+  } else if (grade >= 70) {
+    return "B";
+  } else if (grade >= 60) {
+    return "C";
+  } else if (grade >= 55) {
+    return "D";
+  } else {
+    return "F";
+  }
 }
 
 function gradeCategorizer(names, grades) {
-
-    
   for (i = 0; i < grades.length; i++) {
-    let name = names[i]
+    let name = names[i];
     let grade = grades[i];
-    let letter = letterGrade(grade); 
-    console.log(`Hi ${name}, Your score -> ${grade}, Grade -> ${letter} `); 
-}
-  
+    let letter = letterGrade(grade);
+    console.log(`Hi ${name}, Your score -> ${grade}, Grade -> ${letter} `);
+  }
 }
 
 gradeCategorizer(names, grades);
-
-

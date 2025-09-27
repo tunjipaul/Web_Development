@@ -20,7 +20,7 @@ for (let i = 0; i < shoppingList.length; i++) {
 // 2. students grade analyzer.
 
 
-grades = [45, 67, 89, 90, 23, 10, 32, 54, 78, 150];
+let grades = [];
 
 
 function getAverage(grades) {
@@ -64,12 +64,12 @@ function getPassRate(grades){
 
 getPassRate(grades)
 
-MovieRatingSystem
+// MovieRatingSystem
 
 
-movies = [];
+let movies = [];
 
-ratings = [];
+let ratings = [];
 
 function addMovie(movie, rating){
 
@@ -77,6 +77,8 @@ function addMovie(movie, rating){
  ratings.push(rating);
  console.log("Added movies with rating:", movie, ':', rating)
 
+ console.log("Movies:", movies)
+ console.log("Ratings:", ratings)
 }
 
 addMovie('KotoAye', 9.4);
@@ -86,7 +88,7 @@ addMovie('GOT', 9.9)
 
 function getAverageRating(){
     let totalRating = 0;
-    for (rating of ratings){
+    for (let rating of ratings){
         totalRating += rating;
     }
     console.log(`TotalRating: ${totalRating}`);

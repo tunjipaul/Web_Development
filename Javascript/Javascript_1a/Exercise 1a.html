@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Javascript</title>
-        <style>
-        .js-demo {
+    <title>Personal Information Display</title>
+    <style>
+       .js-demo {
             background-color: #f8f9fa;
             padding: 20px;
             margin: 20px 0;
@@ -36,11 +36,11 @@
 
         .demo-button:hover {
             background-color: #0056b3;
-        }
+        } 
     </style>
 </head>
 <body>
-      <div class="js-demo">
+    <div class="js-demo">
         <h3>Personal Information</h3>
         <p>Create your personal information</p>
 
@@ -97,47 +97,6 @@
                 </div>
                 `;
                 document.getElementById('practice-output').innerHTML = personalInfo
-        }
-    </script>
-    <div class="js-demo">
-        <h3>Arithmetic Operations</h3>
-        <p>Basic Calculator</p>
-        <button class="demo-button" onclick="showArithmeticOperations()">Calculator</button>
-         <div>
-            <button class="demo-button" onclick="add()">+(addition)</button>
-             <button class="demo-button" onclick="add()">-(subtraction)</button>
-              <button class="demo-button" onclick="add()">x(multiplication)</button>
-               <button class="demo-button" onclick="add()">÷(division)</button>
-                <button class="demo-button" onclick="add()">%(modulo(remainder))</button>
-                 <button class="demo-button" onclick="add()">x^(exponentiation)</button>
-         </div>
-        <div id="arithmeticOutput" class="output">Your info displays here</div>
-
-    </div>
-    <script>
-        function showArithmeticOperations(){
-        let question = prompt("which operation do you want to perform: addition, subtraction, multiplication, division, remainder, exponentiation")
-        let firstNumber = Number(prompt("Write a number: "))
-        let secondNumber = Number(prompt("Write another number: "))
-         
-        let addition = firstNumber + secondNumber;
-        let difference = firstNumber - secondNumber;
-        let multiplication = firstNumber * secondNumber;
-        let division = firstNumber/secondNumber;
-        let remainder = firstNumber % secondNumber;
-        let exponentiation = firstNumber ** secondNumber;
-
-        let output = `
-        firstNumber = ${firstNumber}, secondNumber = ${secondNumber}<br><br>
-         addition (a+b): ${addition};          
-         
-             
-        
-        `;
-        document.getElementById("arithmeticOutput").innerHTML = output;
-
-
-
         }
     </script>
 </body>

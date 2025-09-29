@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Javascript</title>
+        <style>
+        
+    </style>
+</head>
+<body>
+    <div class="js-demo">
+        <h3>Arithmetic Operations</h3>
+        <p>Basic Calculator</p>
+        <button class="demo-button" onclick="showArithmeticOperations()">Calculator</button>
+         <div>
+            <button class="demo-button" onclick="add()">+(addition)</button>
+             <button class="demo-button" onclick="add()">-(subtraction)</button>
+              <button class="demo-button" onclick="add()">x(multiplication)</button>
+               <button class="demo-button" onclick="add()">÷(division)</button>
+                <button class="demo-button" onclick="add()">%(modulo(remainder))</button>
+                 <button class="demo-button" onclick="add()">x^(exponentiation)</button>
+         </div>
+        <div id="arithmeticOutput" class="output">Your info displays here</div>
+
+    </div>
+    <script>
+        function showArithmeticOperations(){
+        let question = prompt("which operation do you want to perform: addition, subtraction, multiplication, division, remainder, exponentiation")
+        let firstNumber = Number(prompt("Write a number: "))
+        let secondNumber = Number(prompt("Write another number: "))
+         
+        let addition = firstNumber + secondNumber;
+        let difference = firstNumber - secondNumber;
+        let multiplication = firstNumber * secondNumber;
+        let division = firstNumber/secondNumber;
+        let remainder = firstNumber % secondNumber;
+        let exponentiation = firstNumber ** secondNumber;
+
+        let output = `
+        firstNumber = ${firstNumber}, secondNumber = ${secondNumber}<br><br>
+         addition (a+b): ${addition};          
+         
+             
+        
+        `;
+        document.getElementById("arithmeticOutput").innerHTML = output;
+
+
+
+        }
+    </script>
+</body>
+</html>

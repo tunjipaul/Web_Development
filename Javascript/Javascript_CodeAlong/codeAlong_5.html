@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding and chnaging html elements</title>
+</head>
+<body>
+    <h1 id="title">Original Title</h1>
+    <p id="description">Original description text.</p>
+    <p class="info">this paragraph has a class.</p>
+    <ul id="list">
+        <li>item 1</li>
+        <li>item 2</li>
+    </ul>
+    <button onclick="changeElements()">Change elements</button>
+    <button onclick="addListItem()">Add List Item</button>
+    <button onclick="resetPage()">Reset</button>
+    <script>
+        function changeElements(){
+            //change text content
+            document.getElementById('title').textContent = "javascript changed this title!";
+
+            //changed html content (can include html tags)
+            document.getElementById('description').innerHTML = '<strong>this text is now bold</strong>';
+
+            //find element by class name
+
+            let infoElement = document.querySelector('.info');
+            infoElement.textContent = "found by class name and changed!";
+
+            //change styles
+            document.getElementById('title').style.color = 'blue';
+            document.getElementById('title').style.fontSize = '36px';
+        }
+        function addListItem(){
+            //create a new list item
+            let newItem = document.createElement('li');
+            newItem.textContent = 'New Item added by Javascript!';
+
+            //add it to the list
+
+            document.getElementById('list').appendChild(newItem);
+        }
+        function resetPage(){
+            //reset everything back to original
+            document.getElementById('title').textContent = "original title";
+            document.getElementById('title').style.color = "";
+            document.getElementById('title').style.fontSize = "";
+            document.getElementById('description').innerHTML = "original description text.";
+            document.querySelector('.info').textContent = "this paragrah has a class.";
+
+            //reset list (keep only first 2 items)
+            let list = document.getElementById('list');
+            list.innerHTML = '<li>Item 1</li><li>Item 2</li>';
+        }
+        //run when page loads
+        console.log("Page ready! try clicking the buttons.");
+       
+        //methods for finding elements;
+        //getElementbyID('id') - find by ID(Most common)
+        //querySelector('.className') - find by css class
+        //querySelector('tagName') - find by HTML tag.
+        //createElement('tagName') - create new HTML element
+
+        //methods for changing elements
+        //textcontent - change text only.
+        //innerHTML - change html content.
+        //style.property - change css styles.
+        //appendChild() - add newChild element
+    
+    
+    </script>
+</body>
+</html>

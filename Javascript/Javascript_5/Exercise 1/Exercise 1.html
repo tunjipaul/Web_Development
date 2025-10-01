@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+    <style>
+        .main-div{
+            width: 300px;
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid rgb(168, 134, 202);
+            border-radius: 5px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-div">
+        <p id="firstParagraph">This is a paragraph</p>
+        <button onclick="changeColor()">Click me for paragraph</button>
+    </div>
+    <script>
+        function changeColor(){
+         document.getElementById('firstParagraph').style.color = 'blue';
+         document.getElementById('firstParagraph').style.backgroundColor = 'red';
+        }
+    </script>
+</body>
+</html>

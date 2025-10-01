@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My first Interactive Page</title>
+</head>
+<body>
+    <h1>welcome to javascript in the browser!</h1>
+    <p id="message">this text can be changed by javascript.</p>
+    <button onclick="changeMessage()">click Me!</button>
+    <script>
+        function changeMessage(){
+            console.log("Button was clicked!"); //shows in console.
+        
+        //this changes the html content
+        document.getElementById('message').textContent = 'javascript chnaged this text!';
+        }
+        //this runs when the page loads.
+        console.log("Page loaded and javascript is working!");
+    </script>
+</body>
+</html>

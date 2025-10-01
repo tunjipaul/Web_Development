@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+           .main-div{
+            width: 300px;
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid rgb(168, 134, 202);
+            border-radius: 5px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+
+        <textarea id="comments" onkeyup="handleKeyPress()"></textarea>
+    <div id="keyOutput"></div>
+    <div id="eventLog"></div>
+    <script>
+     function handleKeyPress(){
+        let inputvalue = document.getElementById('comments').value;
+        let output = document.getElementById('keyOutput');
+        if (inputvalue.length === 0) {
+            output.textContent = '';   
+        }
+        
+        else{
+            output.textContent = `You typed: '${inputvalue}'(${inputvalue.length} characters)`;
+        }
+        logEvent(`User Typed: ${inputvalue}`, inputvalue.length);
+     }
+     function logEvent(message, inputLength){
+            let eventLog = document.getElementById('eventLog');
+            let timestamp = new Date().toLocaleTimeString();
+            let newLogEntry = `[${timestamp}] ${message}`;
+            //add new entry to the top
+            if (eventLog.innerHTML === '') {
+                eventLog.innerHTML = `<strong>Event Log:</strong><br>${newLogEntry}`;
+                
+            }else{
+                eventLog.innerHTML = eventLog.innerHTML + `<br>${newLogEntry}`;
+
+            }
+            //account for red count > 200.
+            if (inputLength > 200){
+                eventLog.style.color = 'red';
+            }
+            else{
+                eventLog.style.color = 'black';
+            }
+            console.log(newLogEntry); //log to console.
+        }
+    </script>
+</body>
+</html>

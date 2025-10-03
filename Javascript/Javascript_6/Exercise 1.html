@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistent Notes App</title>
+</head>
+<body>
+    <div>
+        <textarea id="noteArea"></textarea> <br> <br>
+        <button onclick="saveButton()">Save Note</button> <hr>
+        <button onclick="loadButton()">Load Note</button>
+    </div>
+    <div id="outputNote"></div>
+    <script>
+          function saveButton(){
+           let note = document.getElementById('noteArea').value;
+           let savedAt = new Date().toLocaleString();
+        localStorage.setItem('note', JSON.stringify({note, savedAt}));
+        document.getElementById('outputNote').textContent = 'Note Saved!'+ "Saved at:" + savedAt;
+          }
+          function loadButton(){
+            let loadedNote = localStorage.getItem('note');
+            if(loadedNote) {
+                let parsed = JSON.parse(loadedNote);
+                let note = parsed.note;
+                let savedAt = parsed.savedAt;
+                document.getElementById('noteArea').value = note;
+                document.getElementById('outputNote').textContent = "Note Loaded!"+ "Last saved:" + savedAt;
+            }
+            else{
+                document.getElementById('outputNote').textContent = " No note available";
+            }
+           
+          }
+    </script>
+</body>
+</html>

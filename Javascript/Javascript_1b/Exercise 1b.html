@@ -1,54 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Javascript</title>
-        <style>
-        
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript</title>
+    <style>
+      .js-demo {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .demo-button {
+        margin: 5px;
+        padding: 8px 12px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .output {
+        margin-top: 15px;
+        padding: 10px;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        background: #f9f9f9;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="js-demo">
-        <h3>Arithmetic Operations</h3>
-        <p>Basic Calculator</p>
-        <button class="demo-button" onclick="showArithmeticOperations()">Calculator</button>
-         <div>
-            <button class="demo-button" onclick="add()">+(addition)</button>
-             <button class="demo-button" onclick="add()">-(subtraction)</button>
-              <button class="demo-button" onclick="add()">x(multiplication)</button>
-               <button class="demo-button" onclick="add()">÷(division)</button>
-                <button class="demo-button" onclick="add()">%(modulo(remainder))</button>
-                 <button class="demo-button" onclick="add()">x^(exponentiation)</button>
-         </div>
-        <div id="arithmeticOutput" class="output">Your info displays here</div>
-
+      <h3>Arithmetic Operations</h3>
+      <p>Basic Calculator</p>
+      <button class="demo-button" onclick="showArithmeticOperations()">
+        Calculator
+      </button>
+      <div>
+        <button class="demo-button" onclick="add()">+(addition)</button>
+        <button class="demo-button" onclick="subtract()">-(subtraction)</button>
+        <button class="demo-button" onclick="multiply()">
+          x(multiplication)
+        </button>
+        <button class="demo-button" onclick="divide()">÷(division)</button>
+        <button class="demo-button" onclick="modulus()">
+          %(modulo(remainder))
+        </button>
+        <button class="demo-button" onclick="power()">
+          x^(exponentiation)
+        </button>
+      </div>
+      <div id="arithmeticOutput" class="output">Your info displays here</div>
     </div>
     <script>
-        function showArithmeticOperations(){
-        let question = prompt("which operation do you want to perform: addition, subtraction, multiplication, division, remainder, exponentiation")
-        let firstNumber = Number(prompt("Write a number: "))
-        let secondNumber = Number(prompt("Write another number: "))
-         
+      function showArithmeticOperations() {
+        let firstNumber = Number(prompt("Write a number: "));
+        let secondNumber = Number(prompt("Write another number: "));
+
         let addition = firstNumber + secondNumber;
         let difference = firstNumber - secondNumber;
         let multiplication = firstNumber * secondNumber;
-        let division = firstNumber/secondNumber;
+        let division =
+          secondNumber !== 0
+            ? firstNumber / secondNumber
+            : "Cannot divide by zero!";
         let remainder = firstNumber % secondNumber;
         let exponentiation = firstNumber ** secondNumber;
 
         let output = `
         firstNumber = ${firstNumber}, secondNumber = ${secondNumber}<br><br>
-         addition (a+b): ${addition};          
-         
-             
-        
-        `;
+        Addition (a + b): ${addition} <br>
+        Subtraction (a - b): ${difference}<br>
+        Multiplication (a × b): ${multiplication}<br>
+        Division (a ÷ b): ${division}<br>
+        Modulus (a % b): ${remainder}<br>
+        Exponentiation (a ^ b): ${exponentiation}<br>
+    `;
         document.getElementById("arithmeticOutput").innerHTML = output;
+      }
+      // Also log in console
+      console.log("=== Calculator Results ===");
+      console.log(`Addition: ${addition}`);
+      console.log(`Subtraction: ${difference}`);
+      console.log(`Multiplication: ${multiplication}`);
+      console.log(`Division: ${division}`);
+      console.log(`Modulus: ${remainder}`);
+      console.log(`Exponentiation: ${exponentiation}`);
 
+      // Individual operations
+      function add() {
+        let a = Number(prompt("Enter first number:"));
+        let b = Number(prompt("Enter second number:"));
+        document.getElementById(
+          "arithmeticOutput"
+        ).innerHTML = `Addition: ${a} + ${b} = ${a + b}`;
+      }
 
+      function subtract() {
+        let a = Number(prompt("Enter first number:"));
+        let b = Number(prompt("Enter second number:"));
+        document.getElementById(
+          "arithmeticOutput"
+        ).innerHTML = `Subtraction: ${a} - ${b} = ${a - b}`;
+      }
 
-        }
+      function multiply() {
+        let a = Number(prompt("Enter first number:"));
+        let b = Number(prompt("Enter second number:"));
+        document.getElementById(
+          "arithmeticOutput"
+        ).innerHTML = `Multiplication: ${a} × ${b} = ${a * b}`;
+      }
+
+      function divide() {
+        let a = Number(prompt("Enter first number:"));
+        let b = Number(prompt("Enter second number:"));
+        document.getElementById("arithmeticOutput").innerHTML =
+          b !== 0
+            ? `Division: ${a} ÷ ${b} = ${a / b}`
+            : "Invalid! Cannot divide by zero!";
+      }
+
+      function modulus() {
+        let a = Number(prompt("Enter first number:"));
+        let b = Number(prompt("Enter second number:"));
+        document.getElementById(
+          "arithmeticOutput"
+        ).innerHTML = `Modulus: ${a} % ${b} = ${a % b}`;
+      }
+
+      function power() {
+        let a = Number(prompt("Enter base number:"));
+        let b = Number(prompt("Enter exponent:"));
+        document.getElementById(
+          "arithmeticOutput"
+        ).innerHTML = `Exponentiation: ${a} ^ ${b} = ${a ** b}`;
+      }
     </script>
-</body>
+  </body>
 </html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //localstorage works with key-value pairs like objects.
+
+// //save data.
+// localStorage.setItem('userName', 'Alice');
+// localStorage.setItem('userAge', '25');
+// localStorage.setItem('isLoggedIn', 'true');
+
+// //get data
+// let name = localStorage.getItem('userName');
+// let age = localStorage.getItem('userAge');
+// let loggedIn = localStorage.getItem('isLoggedIn');
+
+// console.log('Retrieved data:');
+// console.log('Name:', name); //"alice"
+// console.log("Age:", age); //"25" (note: always returns string)
+// console.log('Logged In:', loggedIn) //"true"
+// //check if data exists.
+// if(localStorage.getItem('userName') !== null){
+//     console.log('user name is saved');
+
+// }else{
+//     console.log('No user name saved');
+// }
+// //remove specific item
+// localStorage.removeItem('userAge');
+//clear all localStorage data
+// localStorage.clear(name); //Uncomment to test
+
+//localstorage always stores strings.
+//data persists even after closing browser
+//use setItem(key, value) to save.
+// use getItem(key) to retrieve, 
+// returns null if key does not exist
+
+
+//working with numbers and booleans.
+//local storage only works with strings so we need to convert data types.
+   //saving numbers.
+//    let price = 15.99;
+//    localStorage.setItem('productPrice', price.toString());
+//    //or simply: localstorage.setItem('productPrice, price');
+
+
+//    //loading numbers.
+//    let savedPrice = localStorage.getItem('productPrice');
+//    if (savedPrice !== null){
+//     savedPrice = Number(savedPrice); //convert string to number
+//     console.log('Price:', savedPrice, 'data type:', typeof savedPrice);
+//    }
+
+//    console.log('') //empty line.
+
+//    //saving booleans
+//    let isActive = true;
+//    localStorage.setItem('userActive:', isActive.toString());
+
+
+//    //loading booleans
+//    let savedActive = localStorage.getItem('userActive');
+//    if (savedActive !== null){
+//     savedActive = savedActive === 'true'; //convert string to boolean
+//     console.log("Active:", savedActive, 'data type:', typeof savedActive);
+
+//    }
+//    console.log(''); //empty line.
+
+//    //helper functions for data conversion.
+//    function saveNumber(key, value){
+//      localStorage.setItem(key, value.toString());
+//    }
+//    function loadNumber(key, defaultValue = 0){
+//     let saved = localStorage.getItem(key);
+//     return saved !== null? Number(saved) : defaultValue;
+//    }
+//    function saveBoolean(key, value){
+//     localStorage.setItem(key, value.toString());
+//    }
+//    function loadBoolean(key, defaultValue = false){
+//     let saved = localStorage.getItem(key);
+//     return saved !== null ? saved === 'true' : defaultValue;
+//    }
+
+//    //test the helper functions.
+//    console.log("Item count:", loadNumber('itemCount'));
+//    console.log('Is premium:', loadBoolean('isPremium'));
+//    console.log("Non existent number:", loadNumber('missing', 100));
+
+   //saving arrays and objects with JSON
+   //localstorage can't directly store arrays or objects.
+   //we use json.stringify() and json.parse() 
+//    //array example.
+//    let favoriteColors = ['blue', 'green', 'red'];
+//    console.log("original array:", favoriteColors);
+   
+//    //save array(convert to JSON String)
+//    localStorage.setItem('colors', JSON.stringify(favoriteColors));
+
+//    //load array (convert back from JSON)
+//    let loadedColors = localStorage.getItem('colors');
+//    if (loadedColors !== null){
+//     loadedColors = JSON.parse(loadedColors);
+//     console.log("Loaded Array:", loadedColors);
+//     console.log("First Color:", loadedColors[0]);
+//    }
+//    console.log('') //empty line.
+
+//    //object example.
+//    let userProfile = {
+//     name: 'John Doe',
+//     age: 30,
+//     email: 'john@example.com',
+//     preferences: {
+//         theme: 'dark',
+//         notifications: true
+//     }
+//    };
+//    console.log('Original Object:', userProfile);
+//    //saveObject
+//    localStorage.setItem('profile', JSON.stringify(userProfile));
+//    //load object.
+//    let loadedProfile = localStorage.getItem('profile');
+//    if(loadedProfile !== null){
+//     loadedProfile =JSON.parse(loadedProfile);
+//     console.log("Loaded Object:", loadedProfile);
+//     console.log("User Name:", loadedProfile.name);
+//     console.log("Theme preference:", loadedProfile.preferences.theme);
+// }
+// console.log('') //empty line.
+
+// //array of objects example (like menu items)
+// let menuItems = [
+//     {id: 1, name: "coffee", price: 3.50, category: "drinks"},
+//     {id: 2, name: "sandwich", price: 8.00, category: "food"},
+//     {id:3, name: "cookie", price: 2.25, category: "dessert"}
+// ];
+
+// //save menu
+// localStorage.setItem('cafeMenu', JSON.stringify(menuItems));
+
+// //load menu
+// let savedMenu = localStorage.getItem('cafeMenu');
+// if (savedMenu !== null){
+//     let loadedMenu = JSON.parse(savedMenu);
+//     console.log("Loaded menu items:");
+//     for (let item of loadedMenu){
+//         console.log(`${item.name}: $${item.price} (${item.category})`);
+//     }
+// }
+//save. Json.stringify() -> converts array/object -> string.
+//store: localStorage.setItem() saves the string.
+//retrieve: localStorage.getItem gets the string.
+//Convert: JSON.parse() converts string -> array/object.
+
+//error handling with localStorage.
+
+//localStorage can fail, so always use error handling.
+
+function saveDataSafely(key, data){
+    try{
+        localStorage.setItem(key, JSON.stringify(data));
+        return true;
+    }catch (error){
+        console.log("error saving data:", error.message);
+        return false;
+    }
+}
+
+function loadDataSafely(key, defaultValue = null){
+    try{
+        let saved = localStorage.getItem(key);
+        if(saved === null){
+            return defaultValue;
+        }
+        return JSON.parse(saved);
+    }catch(error){
+        console.log("error loading data:", error.message);
+        return defaultValue;
+    }
+}
+
+//when javascript throws an error, it creates an error objet.
+//that object usually has 3 common properties.
+//-name -> the type of error(e.g. "SyntaxError", "QuotaExceededError")
+//-message -> a human-readable description of what went wrong.
+//-stack -> a technical trace of where the error happened.
+//test error handling.
+let testData = {
+    name: 'test user', scores: [90, 85, 92]
+};
+if (saveDataSafely('testUser', testData)){
+    console.log('Data saved: data saved successfully');
+}else{
+    console.log('Failed to save data');
+}
+let loaded = loadDataSafely('testUser', {name: 'Default', scores: []});
+console.log('Loaded data:', loaded);
+
+//test with corrupted data.
+localStorage.setItem('corruptedData', 'invalid json{');
+let corrupted = loadDataSafely('corruptedData', 'default value');
+console.log('corrupted data result:', corrupted);
+console.log('') // empty line
+//check local storage availability.
+function isLocalStorageAvailable(){
+    try {
+        let test = 'test';
+        localStorage.setItem(test, test);
+        localStorage.removeItem(test);
+        return true;
+    }catch(error){
+        return false;
+
+    }
+}
+if (isLocalStorageAvailable()){
+    console.log("localStorage is available");
+}else{
+    console.log("localStorage is not available");
+}
+//common localStorage errors:
+//browser does not support localStorage (very old browsers)
+//storage quota exceeded (browser storage is full)
+//private/incognito mode restrictions.
+//Invalid JSON data corruption.
+    </script>
+</body>
+</html>

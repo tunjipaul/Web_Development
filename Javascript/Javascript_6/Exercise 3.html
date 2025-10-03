@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theme Switcher with Persistence</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px;
+        transition: background 0.3s, color 0.3s;
+      }
+      button {
+        margin: 5px;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .light {
+        background: #fff;
+        color: #000;
+      }
+      .dark {
+        background: #222;
+        color: #fff;
+      }
+      .blue {
+        background: #3498db;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>##Theme Switcher</h2>
+    <button onclick="setTheme('light')">Light Mode</button>
+    <button onclick="setTheme('dark')">Dark Mode</button>
+    <button onclick="setTheme('blue')">Blue Mode</button>
+
+    <script>
+      function setTheme(theme) {
+        document.body.className = theme; // apply theme
+        localStorage.setItem("theme", theme); // save to storage
+      }
+
+      // Load saved theme when page loads
+      let savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else {
+        setTheme("light"); // default
+      }
+    </script>
+  </body>
+</html>

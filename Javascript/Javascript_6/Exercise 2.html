@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visit Counter with Reset</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f3f4f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .counter-box {
+        background: #fff;
+        padding: 20px 30px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+      h2 {
+        margin-bottom: 15px;
+        color: #333;
+      }
+      p {
+        margin: 8px 0;
+        font-size: 16px;
+        color: #555;
+      }
+      button {
+        margin-top: 15px;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        background: #3498db;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="counter-box">
+      <h2>->>> Visit Counter</h2>
+      <p id="visitMessage">Loading...</p>
+      <p id="firstVisit"></p>
+      <button onclick="resetCounter()">Reset Counter</button>
+    </div>
+
+    <script>
+      function loadCounter() {
+        let visitCount = localStorage.getItem("visitCount");
+        let firstVisit = localStorage.getItem("firstVisitDate");
+
+        if (visitCount) {
+          visitCount = Number(visitCount) + 1;
+          localStorage.setItem("visitCount", visitCount);
+        } else {
+          visitCount = 1;
+          localStorage.setItem("visitCount", visitCount);
+          firstVisit = new Date().toLocaleString();
+          localStorage.setItem("firstVisitDate", firstVisit);
+        }
+
+        document.getElementById(
+          "visitMessage"
+        ).textContent = `You have visited ${visitCount} time(s).`;
+
+        if (firstVisit) {
+          document.getElementById(
+            "firstVisit"
+          ).textContent = `First visit: ${firstVisit}`;
+        }
+      }
+
+      function resetCounter() {
+        localStorage.removeItem("visitCount");
+        localStorage.removeItem("firstVisitDate");
+        document.getElementById("visitMessage").textContent =
+          "Counter has been reset!";
+        document.getElementById("firstVisit").textContent = "";
+      }
+
+      // Load counter when page loads
+      loadCounter();
+    </script>
+  </body>
+</html>

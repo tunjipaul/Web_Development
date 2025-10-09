@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Performance Tracker</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", Arial, sans-serif;
+        background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 40px;
+      }
+
+      .general-container {
+        width: 100%;
+        max-width: 1000px;
+      }
+
+      #search {
+        width: 100%;
+        max-width: 350px;
+        padding: 12px 15px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        outline: none;
+        font-size: 14px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        transition: 0.3s;
+      }
+
+      #search:focus {
+        border-color: #f7931e;
+        box-shadow: 0 4px 10px rgba(247, 147, 30, 0.2);
+      }
+
+      .viewBtn {
+        padding: 10px 12px;
+        border: none;
+        background-color: #e67e22;
+        color: #ffffff;
+        cursor: pointer;
+        border-radius: 10px;
+        font-weight: 600;
+      }
+
+      .viewBtn:hover {
+        background-color: #f7931e;
+      }
+
+      .main-container {
+        display: flex;
+        gap: 25px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        flex-wrap: wrap;
+      }
+
+      .studentForm {
+        flex: 1;
+        min-width: 280px;
+        background-color: #fff9f3;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+      }
+      .studentForm legend {
+        font-weight: 600;
+        color: #333;
+        text-align: center;
+      }
+
+      .studentForm fieldset {
+        border: none;
+      }
+
+      .studentForm label {
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #333;
+        font-weight: 600;
+      }
+
+      .studentForm input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        outline: none;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+
+      .studentForm button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border-radius: 8px;
+        border: none;
+        background-color: #f7931e;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .studentTable {
+        flex: 1.2;
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff9f3;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+      }
+      .studentTable caption {
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .studentTable th,
+      .studentTable td {
+        text-align: left;
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+
+      .studentTable th {
+        background-color: #f7931e;
+        color: white;
+        font-weight: 600;
+      }
+
+      .deleteBtn {
+        padding: 8px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #e67e22;
+        color: white;
+        font-weight: 600;
+      }
+
+      .deleteBtn:hover {
+        background-color: #fcb69f;
+      }
+
+      .image {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="general-container">
+      <input
+        type="search"
+        name="search"
+        id="search"
+        placeholder="🔍 Search by student name..."
+      />
+      <button id="viewBtn" class="viewBtn">View Saved Students</button>
+
+      <div class="main-container">
+        <form class="studentForm">
+          <fieldset>
+            <legend>Student Data</legend>
+
+            <label for="image">Image URL:</label>
+            <input type="url" id="image" placeholder="Attach image URL" />
+
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" required />
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" required />
+
+            <label for="class">Class:</label>
+            <input type="text" id="class" required />
+
+            <label for="firstScore">First Score:</label>
+            <input type="number" id="firstScore" />
+
+            <label for="secondScore">Second Score:</label>
+            <input type="number" id="secondScore" />
+
+            <label for="thirdScore">Third Score:</label>
+            <input type="number" id="thirdScore" />
+
+            <button type="submit">Add Student</button>
+          </fieldset>
+        </form>
+
+        <table class="studentTable">
+          <caption>
+            Student Information
+          </caption>
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Class</th>
+              <th>Average</th>
+              <th>Performance</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      const tableBody = document.getElementById("studentTableBody");
+
+      // Save to local storage
+      function saveInfo(student) {
+        let info = JSON.parse(localStorage.getItem("studentInfo")) || [];
+        info.push(student);
+        localStorage.setItem("studentInfo", JSON.stringify(info));
+      }
+
+      // Get info from local storage
+      function getInfo() {
+        return JSON.parse(localStorage.getItem("studentInfo")) || [];
+      }
+
+      // Delete from local storage
+      function deleteStudent(name, row) {
+        row.remove();
+        let info = getInfo();
+        let updated = info.filter((student) => student.fullName !== name);
+        localStorage.setItem("studentInfo", JSON.stringify(updated));
+      }
+
+      // Add new student
+      function addStudent(event) {
+        event.preventDefault();
+
+        const student = {
+          image: document.getElementById("image").value,
+          fullName: document.getElementById("fullName").value,
+          age: document.getElementById("age").value,
+          className: document.getElementById("class").value,
+          firstScore: parseFloat(document.getElementById("firstScore").value),
+          secondScore: parseFloat(document.getElementById("secondScore").value),
+          thirdScore: parseFloat(document.getElementById("thirdScore").value),
+        };
+
+        const average = (
+          (student.firstScore + student.secondScore + student.thirdScore) /
+          3
+        ).toFixed(2);
+
+        let performance = "";
+        let color = "";
+        if (average >= 75) {
+          performance = "Excellent";
+          color = "green";
+        } else if (average >= 50) {
+          performance = "Good";
+          color = "goldenrod";
+        } else {
+          performance = "Need Help!";
+          color = "red";
+        }
+
+        const tableRow = document.createElement("tr");
+        tableRow.innerHTML = `
+          <td><img src="${student.image}" alt="${student.fullName}'s image" class="image"></td>
+          <td>${student.fullName}</td>
+          <td>${student.age}</td>
+          <td>${student.className}</td>
+          <td>${average}</td>
+          <td style="color:${color}; font-weight:600">${performance}</td>
+          <td><button class="deleteBtn">Delete</button></td>
+        `;
+
+        tableBody.appendChild(tableRow);
+
+        // Delete button functionality
+        const deleteButton = tableRow.querySelector(".deleteBtn");
+        deleteButton.addEventListener("click", function () {
+          deleteStudent(student.fullName, tableRow);
+        });
+
+        // Save student to localStorage
+        saveInfo(student);
+
+        // Clear the form
+        document.querySelector(".studentForm").reset();
+      }
+
+      // View saved students
+      function viewStudents() {
+        tableBody.innerHTML = "";
+        const savedStudents = getInfo();
+
+        savedStudents.forEach((student) => {
+          const average = (
+            (student.firstScore + student.secondScore + student.thirdScore) /
+            3
+          ).toFixed(2);
+
+          let performance = "";
+          let color = "";
+          if (average >= 75) {
+            performance = "Excellent";
+            color = "green";
+          } else if (average >= 50) {
+            performance = "Good";
+            color = "goldenrod";
+          } else {
+            performance = "Need Help!";
+            color = "red";
+          }
+
+          const tableRow = document.createElement("tr");
+          tableRow.innerHTML = `
+            <td><img src="${student.image}" alt="${student.fullName}'s image" class="image"></td>
+            <td>${student.fullName}</td>
+            <td>${student.age}</td>
+            <td>${student.className}</td>
+            <td>${average}</td>
+            <td style="color:${color}; font-weight:600">${performance}</td>
+            <td><button class="deleteBtn">Delete</button></td>
+          `;
+
+          const deleteButton = tableRow.querySelector(".deleteBtn");
+          deleteButton.addEventListener("click", function () {
+            deleteStudent(student.fullName, tableRow);
+          });
+
+          tableBody.appendChild(tableRow);
+        });
+      }
+
+      // SEARCH FILTER
+      document.getElementById("search").addEventListener("input", function () {
+        const searchText = this.value.toLowerCase();
+        const savedStudents =
+          JSON.parse(localStorage.getItem("studentInfo")) || [];
+
+        // Filter students from localStorage
+        const filtered = savedStudents.filter((student) =>
+          student.fullName.toLowerCase().includes(searchText)
+        );
+
+        // Show results
+        tableBody.innerHTML = "";
+        filtered.forEach((student) => {
+          const average = (
+            (student.firstScore + student.secondScore + student.thirdScore) /
+            3
+          ).toFixed(2);
+
+          let performance = "";
+          let color = "";
+          if (average >= 75) {
+            performance = "Excellent";
+            color = "green";
+          } else if (average >= 50) {
+            performance = "Good";
+            color = "goldenrod";
+          } else {
+            performance = "Need Help!";
+            color = "red";
+          }
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td><img src="${student.image}" alt="${student.fullName}'s image" class="image"></td>
+            <td>${student.fullName}</td>
+            <td>${student.age}</td>
+            <td>${student.className}</td>
+            <td>${average}</td>
+            <td style="color:${color}; font-weight:600">${performance}</td>
+            <td><button class="deleteBtn">Delete</button></td>
+        `;
+
+          // Add delete functionality
+          const deleteButton = row.querySelector(".deleteBtn");
+          deleteButton.addEventListener("click", function () {
+            deleteStudent(student.fullName, row);
+          });
+
+          tableBody.appendChild(row);
+        });
+      });
+
+      // Event listeners
+      document
+        .querySelector(".studentForm")
+        .addEventListener("submit", addStudent);
+      document
+        .getElementById("viewBtn")
+        .addEventListener("click", viewStudents);
+    </script>
+  </body>
+</html>

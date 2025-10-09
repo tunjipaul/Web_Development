@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List App</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    form input, form select, form button {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+      border: none;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      background: #2980b9;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 15px;
+    }
+
+    .filters button {
+      background: #ddd;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .filters button:hover {
+      background: #bbb;
+    }
+
+    #taskList {
+      list-style: none;
+    }
+
+    .task {
+      background: #fafafa;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-left: 5px solid;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .task.completed span {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .task .actions i {
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .high { border-color: red; }
+    .medium { border-color: orange; }
+    .low { border-color: green; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>My To-Do List</h1>
+
+    <form id="taskForm">
+      <input type="text" id="taskName" placeholder="Enter task..." required>
+      <select id="priority">
+        <option value="High">High</option>
+        <option value="Medium" selected>Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <input type="date" id="dueDate" required>
+      <button type="submit">Add Task</button>
+    </form>
+
+    <div class="filters">
+      <button class="filter-btn" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
+      <button class="filter-btn" data-filter="pending">Pending</button>
+    </div>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    const taskForm = document.getElementById("taskForm");
+    const taskList = document.getElementById("taskList");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    // Load existing tasks from localStorage
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    // Function to display tasks
+    function displayTasks(filter = "all") {
+      taskList.innerHTML = "";
+
+      const filtered = tasks.filter(task => {
+        if (filter === "completed") return task.completed;
+        if (filter === "pending") return !task.completed;
+        return true;
+      });
+
+      filtered.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.className = `task ${task.priority.toLowerCase()} ${task.completed ? "completed" : ""}`;
+
+        li.innerHTML = `
+          <span>${task.name} — ${task.dueDate} (${task.priority})</span>
+          <div class="actions">
+            <i class="fa-solid fa-check" onclick="toggleComplete(${index})" title="Mark as Done"></i>
+            <i class="fa-solid fa-trash" onclick="deleteTask(${index})" title="Delete Task"></i>
+          </div>
+        `;
+        taskList.appendChild(li);
+      });
+
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    // Add a new task
+    taskForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const name = document.getElementById("taskName").value.trim();
+      const priority = document.getElementById("priority").value;
+      const dueDate = document.getElementById("dueDate").value;
+
+      if (!name || !dueDate) {
+        alert("Please fill all fields!");
+        return;
+      }
+
+      tasks.push({ name, priority, dueDate, completed: false });
+      taskForm.reset();
+      displayTasks();
+    });
+
+    // Mark task as completed or not
+    function toggleComplete(index) {
+      tasks[index].completed = !tasks[index].completed;
+      displayTasks();
+    }
+
+    // Delete task
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      displayTasks();
+    }
+
+    // Filter buttons
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => displayTasks(btn.dataset.filter));
+    });
+
+    // Display tasks when page loads
+    displayTasks();
+  </script>
+</body>
+</html>

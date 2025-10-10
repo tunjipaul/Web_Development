@@ -43,4 +43,4 @@ function getPassRate(grades){
     console.log(`PassRate: ${passRate}%`);
 }
 
-getPassRate(grades)
+getPassRate([67, 89, 10])

@@ -1,213 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>To-Do List App</title>
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 700px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 15px;
-      color: #333;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 15px;
-    }
-
-    form input, form select, form button {
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    form button {
-      background: #3498db;
-      color: white;
-      cursor: pointer;
-      border: none;
-      transition: 0.3s;
-    }
-
-    form button:hover {
-      background: #2980b9;
-    }
-
-    .filters {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 15px;
-    }
-
-    .filters button {
-      background: #ddd;
-      border: none;
-      padding: 6px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .filters button:hover {
-      background: #bbb;
-    }
-
-    #taskList {
-      list-style: none;
-    }
-
-    .task {
-      background: #fafafa;
-      margin-bottom: 10px;
-      padding: 10px;
-      border-left: 5px solid;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .task.completed span {
-      text-decoration: line-through;
-      opacity: 0.6;
-    }
-
-    .task .actions i {
-      cursor: pointer;
-      margin-left: 10px;
-    }
-
-    .high { border-color: red; }
-    .medium { border-color: orange; }
-    .low { border-color: green; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>My To-Do List</h1>
-
-    <form id="taskForm">
-      <input type="text" id="taskName" placeholder="Enter task..." required>
-      <select id="priority">
-        <option value="High">High</option>
-        <option value="Medium" selected>Medium</option>
-        <option value="Low">Low</option>
-      </select>
-      <input type="date" id="dueDate" required>
-      <button type="submit">Add Task</button>
-    </form>
-
-    <div class="filters">
-      <button class="filter-btn" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="completed">Completed</button>
-      <button class="filter-btn" data-filter="pending">Pending</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: antiquewhite;
+      }
+      .general-container {
+        height: 100vh;
+        margin: auto;
+        width: auto;
+        margin-top: 10px;
+      }
+      .general-container h1 {
+        text-align: center;
+        color: #5c5252;
+      }
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        border-left: 3px solid rgb(72, 43, 43);
+        background-color: rgb(249, 234, 231);
+        border-radius: 8px;
+        padding: 10px;
+        margin: 10px 30px;
+        width: 50%;
+        /* height: 100% */
+      }
+      .form-container label {
+        font-weight: 700;
+      }
+      .form-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        padding: 20px;
+      }
+      .form-container input,
+      select {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 5px;
+        padding: 10px;
+        border-radius: 8px;
+      }
+      .form-container input,
+      select:focus {
+        border: 2px solid brown;
+      }
+      .form-container button {
+        padding: 10px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        background-color: rgb(235, 110, 110);
+        cursor: pointer;
+      }
+      .form-container button:hover {
+        background-color: rgb(227, 88, 88);
+        color: white;
+      }
+      .filters-Content {
+        border-right: 3px solid rgb(72, 43, 43);
+        background-color: rgb(249, 234, 231);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 10px 30px;
+        width: 50%;
+        display: flex;
+        gap: 20px;
+      }
+      .filters-Content button {
+        height: 100px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        border: 1px solid brown;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .filters-Content button:hover {
+        background-color: #ddd;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="general-container">
+      <h1>To-Do List Application</h1>
+      <div class="form-container">
+        <form action="" id="formBody">
+          <label for="taskName"
+            >Task Name:
+            <input
+              type="text"
+              name="taskName"
+              id="taskName"
+              placeholder="enter your task..."
+              required
+            />
+          </label>
+          <label for="priority"
+            >Priority:
+            <select name="priority" id="priority">
+              <option value="">High</option>
+              <option value="">Medium</option>
+              <option value="">Low</option>
+            </select>
+          </label>
+          <label for="dueDate"
+            >Due Date:
+            <input type="date" name="dueDate" id="dueDate" />
+          </label>
+          <button class="addTask">Add Task</button>
+        </form>
+      </div>
+      <div class="filters-Content">
+        <button class="filter-btn">All</button>
+        <button class="filter-btn">Completed</button>
+        <button class="filter-btn">Pending</button>
+        <ul id="taskList" class="taskList"></ul>
+      </div>
     </div>
+    <script>
+      // Get all needed elements
+      const formBody = document.getElementById("formBody");
+      const taskList = document.getElementById("taskList");
+      const filterButtons = document.querySelectorAll(".filter-btn");
 
-    <ul id="taskList"></ul>
-  </div>
+      // Get saved tasks or start empty
+      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  <script>
-    const taskForm = document.getElementById("taskForm");
-    const taskList = document.getElementById("taskList");
-    const filterButtons = document.querySelectorAll(".filter-btn");
-
-    // Load existing tasks from localStorage
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
-    // Function to display tasks
-    function displayTasks(filter = "all") {
-      taskList.innerHTML = "";
-
-      const filtered = tasks.filter(task => {
-        if (filter === "completed") return task.completed;
-        if (filter === "pending") return !task.completed;
-        return true;
-      });
-    
-      filtered.forEach((task, index) => {
-        const li = document.createElement("li");
-        li.className = `task ${task.priority.toLowerCase()} ${task.completed ? "completed" : ""}`;
-
-        li.innerHTML = `
-          <span>${task.name} — ${task.dueDate} (${task.priority})</span>
-          <div class="actions">
-            <i class="fa-solid fa-check" onclick="toggleComplete(${index})" title="Mark as Done"></i>
-            <i class="fa-solid fa-trash" onclick="deleteTask(${index})" title="Delete Task"></i>
-          </div>
-        `;
-        taskList.appendChild(li);
-      });
-
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-    }
-
-    // Add a new task
-    taskForm.addEventListener("submit", e => {
-      e.preventDefault();
-      const name = document.getElementById("taskName").value.trim();
-      const priority = document.getElementById("priority").value;
-      const dueDate = document.getElementById("dueDate").value;
-
-      if (!name || !dueDate) {
-        alert("Please fill all fields!");
-        return;
+      // Save to localStorage
+      function saveTasks() {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
       }
 
-      tasks.push({ name, priority, dueDate, completed: false });
-      taskForm.reset();
+      // Display tasks
+      function displayTasks(filter = "All") {
+        taskList.innerHTML = "";
+
+        // Filter tasks
+        let filtered = [];
+        if (filter === "Completed") filtered = tasks.filter((t) => t.completed);
+        else if (filter === "Pending")
+          filtered = tasks.filter((t) => !t.completed);
+        else filtered = tasks;
+
+        // Create list items
+        for (let i = 0; i < filtered.length; i++) {
+          const task = filtered[i];
+          const li = document.createElement("li");
+          li.style.listStyle = "none";
+          li.style.margin = "10px 0";
+          li.style.padding = "10px";
+          li.style.borderRadius = "8px";
+          li.style.display = "flex";
+          li.style.justifyContent = "space-between";
+          li.style.alignItems = "center";
+          li.style.fontWeight = "500";
+
+          // Color code by priority
+          if (task.priority === "High")
+            li.style.backgroundColor = "#ffcccc"; // red tint
+          else if (task.priority === "Medium")
+            li.style.backgroundColor = "#ffe0b3"; // orange tint
+          else li.style.backgroundColor = "#d6f5d6"; // green tint
+
+          // Add text
+          const text = document.createElement("span");
+          text.textContent = `${task.name} — ${task.dueDate} (${task.priority})`;
+          if (task.completed) {
+            text.style.textDecoration = "line-through";
+            text.style.color = "gray";
+          }
+
+          // Buttons container
+          const btnBox = document.createElement("div");
+
+          // Done button
+          const doneBtn = document.createElement("button");
+          doneBtn.textContent = "✔️";
+          doneBtn.style.marginRight = "5px";
+          doneBtn.style.border = "none";
+          doneBtn.style.padding = "5px 8px";
+          doneBtn.style.borderRadius = "5px";
+          doneBtn.style.cursor = "pointer";
+          doneBtn.style.background = "#b3ffb3";
+          doneBtn.onclick = function () {
+            task.completed = !task.completed;
+            saveTasks();
+            displayTasks(filter);
+          };
+
+          // Delete button
+          const delBtn = document.createElement("button");
+          delBtn.textContent = "🗑️";
+          delBtn.style.border = "none";
+          delBtn.style.padding = "5px 8px";
+          delBtn.style.borderRadius = "5px";
+          delBtn.style.cursor = "pointer";
+          delBtn.style.background = "#ff9999";
+          delBtn.onclick = function () {
+            const index = tasks.indexOf(task);
+            tasks.splice(index, 1);
+            saveTasks();
+            displayTasks(filter);
+          };
+
+          // Put everything together
+          btnBox.appendChild(doneBtn);
+          btnBox.appendChild(delBtn);
+          li.appendChild(text);
+          li.appendChild(btnBox);
+          taskList.appendChild(li);
+        }
+
+        saveTasks();
+      }
+
+      // Add new task
+      formBody.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("taskName").value.trim();
+        const priority = document.getElementById("priority").value || "Low";
+        const dueDate = document.getElementById("dueDate").value;
+
+        if (!name || !dueDate) {
+          alert("Please fill all fields!");
+          return;
+        }
+
+        const newTask = { name, priority, dueDate, completed: false };
+        tasks.push(newTask);
+        saveTasks();
+        formBody.reset();
+        displayTasks();
+      });
+
+      // Filter button click
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => displayTasks(btn.textContent));
+      });
+
+      // Show tasks when page loads
       displayTasks();
-    });
-
-    // Mark task as completed or not
-    function toggleComplete(index) {
-      tasks[index].completed = !tasks[index].completed;
-      displayTasks();
-    }
-
-    // Delete task
-    function deleteTask(index) {
-      tasks.splice(index, 1);
-      displayTasks();
-    }
-
-    // Filter buttons
-    filterButtons.forEach(btn => {
-      btn.addEventListener("click", () => displayTasks(btn.dataset.filter));
-    });
-
-    // Display tasks when page loads
-    displayTasks();
-  </script>
-</body>
+    </script>
+  </body>
 </html>
